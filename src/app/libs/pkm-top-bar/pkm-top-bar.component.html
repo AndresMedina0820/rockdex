@@ -1,0 +1,7 @@
+<a class="pkm-topbar" href="#">
+	<img [src]="logo" *ngIf="logo; else elseLogo"
+	/>
+	<ng-template #elseLogo>
+		<img [src]="logoDefault" />
+	</ng-template>
+</a>

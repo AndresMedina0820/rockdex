@@ -1,0 +1,16 @@
+<div class="search-pokemons">
+	<input
+		class="search-pokemons__input"
+		name="keywords"
+		[(ngModel)]="keywords"
+		type="text"
+		placeholder="Busca un pokemon"
+		(keyup)="onSearch()"
+	/>
+	<app-pkm-button
+		class="search-pokemons__button"
+		[pkmType]="btnClass"
+		[text]="text"
+		(click)="onSearch()"
+	></app-pkm-button>
+</div>

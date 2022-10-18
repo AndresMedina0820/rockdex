@@ -1,0 +1,33 @@
+nav {
+	position: relative;
+	background-color: #FFFFFFFF;
+	padding: 0 1%;
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.nav__content {
+	display: grid;
+	grid-template-columns: 10% 10%;
+	justify-content: space-between;
+	align-items: center;
+	height: 4rem;
+}
+
+.nav__favorites {
+	justify-self: end;
+	position: relative;
+}
+
+.badge-count {
+	position: absolute;
+	top: -.7rem;
+	left: .7rem;
+    padding: .1rem .4rem;
+    font-size: .75rem;
+    color: #fff;
+	background-color: #EF4444;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 100%;
+}

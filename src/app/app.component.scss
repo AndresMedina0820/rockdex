@@ -1,0 +1,27 @@
+.page-content {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 4rem);
+	background-color: #F3F4F6;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 100%;
+    grid-template-rows: 4rem 100%;
+    grid-template-areas:
+		"nav"
+		"section";
+
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+	grid-area: nav;
+}
+
+.main-container {
+	grid-area: section;
+}
+

@@ -1,0 +1,15 @@
+<div class="pokemons-favorites">
+	<div class="pokemons-favorites__header">
+		<div (click)="redirectoList()">
+			<img src="../../../assets/icons/arrow-left.svg" alt="">
+		</div>
+		<h1 class="title">Favoritos</h1>
+	</div>
+	<div class="pokemons-favorites__grid">
+		<app-pokemon
+		*ngFor="let pokemon of pokemons"
+		[pokemon]="pokemon"
+		></app-pokemon>
+	</div>
+</div>
+

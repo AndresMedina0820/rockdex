@@ -1,0 +1,57 @@
+.pokemons-favorites {
+	display: grid;
+	grid-template-rows: auto 100%;
+	grid-template-columns: 80%;
+	justify-content: center;
+	grid-template-areas:
+	"header"
+	"list";
+}
+
+.pokemons-favorites__header {
+	grid-area: header;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.pokemons-favorites__header h1 {
+	font-size: 2rem;
+}
+
+.pokemons-favorites__grid {
+	grid-area: list;
+}
+
+/* Media Queries */
+
+// Mobile
+@media (max-width: 576px) {
+	.pokemons-favorites__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 10rem;
+		gap: 1rem;
+	}
+}
+
+// Tables
+@media (min-width: 577px) and (max-width: 768px) {
+	.pokemons-favorites__grid {
+		color: red;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 10rem;
+		gap: 1rem;
+	}
+}
+
+// Desktop
+@media screen and (min-width: 769px) {
+	.pokemons-favorites__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 10rem;
+		gap: 2rem;
+	}
+}

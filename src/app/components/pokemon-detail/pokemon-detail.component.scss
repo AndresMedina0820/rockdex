@@ -1,0 +1,125 @@
+.pokemon-detail {
+	display: grid;
+	grid-template-rows: 20% 80%;
+	grid-template-columns: 96%;
+	row-gap: 1rem;
+	justify-content: center;
+	grid-template-areas:
+	"back"
+	"content";
+}
+
+.pokemon-detail__back {
+	grid-area: back;
+	align-self: center;
+	cursor: pointer;
+
+	& img {
+		font-size: 1rem;
+	}
+}
+
+.pokemon-detail__content {
+	grid-area: content;
+	display: grid;
+	grid-template-columns: 50% 30%;
+	grid-template-rows: auto;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+}
+
+.pokemon-detail__content img {
+	width: 15rem;
+}
+
+.information-grid {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-auto-rows: 30% auto 10%;
+	grid-template-areas:
+	"header"
+	"description"
+	"button";
+	align-items: center;
+	padding: 1rem;
+}
+
+.information-grid__header {
+	grid-area: header;
+	width: 100%;
+	justify-items: center;
+	text-align: center;
+}
+
+.information-grid__header h1 {
+	font: 32px;
+	margin: 0;
+}
+
+.information-grid__header .badge {
+	margin-top: 1rem;
+}
+
+.information-grid__description {
+	grid-template-areas: description;
+}
+
+.information-grid__description div {
+	display: flex;
+	margin-bottom: .8rem;
+	& b {
+		display: inline;
+		margin-right: .3rem;
+	}
+	& p {
+		display: inline;
+		margin: 0;
+	}
+}
+
+.information-grid__button {
+	grid-template-areas: button;
+}
+
+// Mobile
+@media all and (max-width: 576px){
+	.pokemon-detail__content {
+		grid-area: content;
+		display: grid;
+		grid-template-rows: auto;
+		grid-template-columns: 85% !important;
+		justify-content: center;
+		justify-items: center;
+		row-gap: 2rem;
+	}
+}
+
+// Tables
+@media all and (max-width: 768px){
+	.pokemon-detail {
+		display: grid;
+		grid-template-rows: 10% auto;
+		grid-template-columns: 100%;
+		justify-content: center;
+		row-gap: 0;
+		grid-template-areas:
+		"back"
+		"content";
+	}
+
+	.pokemon-detail__content {
+		grid-area: content;
+		display: grid;
+		grid-template-rows: auto;
+		grid-template-columns: 50%;
+		justify-content: center;
+		justify-items: center;
+		row-gap: 2rem;
+	}
+
+	.pokemon-detail__back {
+		margin-left: 1rem;
+	}
+}
+

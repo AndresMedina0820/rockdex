@@ -1,0 +1,27 @@
+<div class="pokemons-list">
+	<div class="pokemons-list__header">
+		<h1 class="title">Pokemones</h1>
+		<app-search
+		(searchPokemon)="onSearchPokemon($event)"
+		></app-search>
+	</div>
+	<div class="pokemons-list__grid" *ngIf="pokemons.length">
+		<app-pokemon
+		*ngFor="let pokemon of pokemons"
+		[pokemon]="pokemon"
+		></app-pokemon>
+	</div>
+	<div class="pokemons-list__empty-state" *ngIf="!pokemons.length">
+		<h1>No se encontraron pokemones</h1>
+		<img src="../../../assets/emptyStates/empty-state.png" alt="empty state">
+	</div>
+	<div class="pokemons-list__button">
+		<div *ngIf="pokemons.length > 0">
+			<app-pkm-button
+				[pkmType]="btnClass"
+				(click)="loadMore()"
+				[text]="textContent"
+			></app-pkm-button>
+		</div>
+	</div>
+</div>

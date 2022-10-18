@@ -1,0 +1,40 @@
+<div class="pokemon-detail">
+	<div class="pokemon-detail__back">
+		<div (click)="redirectoList()">
+			<img src="../../../assets/icons/arrow-left.svg" alt="">
+		</div>
+	</div>
+	<div class="pokemon-detail__content">
+		<img [src]="pokemonDetail.pic" [alt]="pokemonDetail.name">
+		<div class="information-grid card">
+			<div class="information-grid__header">
+				<h1>{{pokemonDetail.name | titlecase}}</h1>
+				<div class="badge" *ngFor="let types of pokemonDetail.types">
+					{{types.type.name | titlecase}}
+				</div>
+			</div>
+			<div class="information-grid__description">
+				<p>{{pokemonDetail.description}}</p>
+				<div>
+					<b>ID:</b>
+					<p>{{pokemonDetail.id|concatUnit}}</p>
+				</div>
+				<div>
+					<b>Altura:</b>
+					<p>{{pokemonDetail.height}}</p>
+				</div>
+				<div>
+					<b>Peso:</b>
+					<p>{{pokemonDetail.weight}}</p>
+				</div>
+			</div>
+			<div class="information-grid__button">
+				<app-pkm-button
+				[pkmType]="btnClass"
+				(click)="onAddFavorites()"
+				[text]="textContent"
+				></app-pkm-button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+<div class="pkm-fav">
+	<img *ngIf="checked; else elseFav" src="../../../assets/icons/heart-filled-fav.svg" alt="favorite">
+	<ng-template #elseFav>
+		<img src="../../../assets/icons/heart.svg" alt="favorite">
+	</ng-template>
+</div>

@@ -1,0 +1,19 @@
+<div class="pokemon-card card">
+	<div class="pokemon-card__grid">
+		<img [src]="pokemon.pic" alt="image pokemon" (click)="onShowDetails()">
+		<div class="pokemon-information" (click)="onShowDetails()">
+			<p>{{pokemon.id|concatUnit}}</p>
+			<p class="pokemon-information__name">{{pokemon.name|titlecase}}</p>
+			<div class="pokemon-information__type">
+				<div class="badge" *ngFor="let types of pokemon.types">
+					{{types.type.name | titlecase}}
+				</div>
+			</div>
+		</div>
+		<div class="pokemon-favorites" (click)="onAddFavorites()">
+			<app-pkm-fav-button
+			[checked]="pokemon.fav"
+			></app-pkm-fav-button>
+		</div>
+	</div>
+</div>

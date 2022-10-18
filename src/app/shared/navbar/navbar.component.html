@@ -1,0 +1,15 @@
+<nav class="navbar">
+	<div class="nav__content">
+		<app-pkm-top-bar
+			[logo]="logo"
+		></app-pkm-top-bar>
+		<div class="nav__favorites" (click)="onFavList()">
+			<img
+				src="./../../../assets/icons/heart-filled.svg"
+				alt=""
+				class="d-inline-block align-text-top"
+			/>
+			<div *ngIf="favs_count" class="badge-count">{{favs_count}}</div>
+		</div>
+	</div>
+</nav>

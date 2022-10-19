@@ -12,8 +12,11 @@ export class PokemonsService {
 	URL_API = "https://pokeapi.co/api/v2/pokemon";
 	private myFavsPokemons: Pokemon[] = [];
 	private myFav = new BehaviorSubject<Pokemon[]>([]);
-
 	myFav$ = this.myFav.asObservable();
+
+	private loading = new BehaviorSubject(false);
+	loading$ = this.loading.asObservable();
+
 
 	constructor(
 		private http: HttpClient

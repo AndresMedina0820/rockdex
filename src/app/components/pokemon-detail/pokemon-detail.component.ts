@@ -24,7 +24,7 @@ export class PokemonDetailComponent implements OnInit {
 		fav: false
 	};
 	btnClass: string = "primary"
-	textContent: string = "Agregar a Favoritos"
+	textContent: string = "AGREGAR A FAVORITOS"
 
 	constructor(
 		private route: ActivatedRoute,
@@ -80,7 +80,7 @@ export class PokemonDetailComponent implements OnInit {
 	}
 
 	setTextContent() {
-		this.textContent = this.pokemonDetail.fav ? "Quitar de Favoritos" : "Agregar a Favoritos";
+		this.textContent = this.pokemonDetail.fav ? "QUITAR DE FAVORITOS" : "AGREGAR A FAVORITOS";
 	}
 
 

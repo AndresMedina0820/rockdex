@@ -1,45 +1,55 @@
-.pokemons-favorites {
+.pokemons-favorites-list {
 	display: grid;
-	grid-template-rows: auto 100%;
-	grid-template-columns: 80%;
 	justify-content: center;
 	grid-template-areas:
 	"header"
 	"list";
+	height: auto;
+	width: 100%;
 }
 
-.pokemons-favorites__header {
+.pokemons-favorites-list__header {
 	grid-area: header;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 }
 
-.pokemons-favorites__header h1 {
+.pokemons-favorites-list__header h1 {
 	font-size: 2rem;
 }
 
-.pokemons-favorites__grid {
+.pokemons-favorites-list__grid {
 	grid-area: list;
+	display: grid;
 }
 
 /* Media Queries */
 
 // Mobile
-@media (max-width: 576px) {
-	.pokemons-favorites__grid {
+@media only screen and (max-width: 660px) {
+	.pokemons-favorites-list {
 		display: grid;
+		grid-template-columns: 95%;
+		grid-template-rows: 8rem 100% 5rem;
+	}
+
+	.pokemons-favorites-list__grid {
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 10rem;
+		grid-template-rows: 20rem;
 		gap: 1rem;
 	}
 }
 
 // Tables
-@media (min-width: 577px) and (max-width: 768px) {
-	.pokemons-favorites__grid {
-		color: red;
+@media only screen and (min-width: 660px) {
+	.pokemons-favorites-list {
 		display: grid;
+		grid-template-columns: 90%;
+		grid-template-rows: 6rem 100% 5rem;
+	}
+
+	.pokemons-favorites-list__grid {
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 10rem;
 		gap: 1rem;
@@ -47,9 +57,13 @@
 }
 
 // Desktop
-@media screen and (min-width: 769px) {
-	.pokemons-favorites__grid {
-		display: grid;
+@media only screen and (min-width: 992px) {
+	.pokemons-favorites-list {
+		grid-template-columns: 80%;
+		grid-template-rows: 6rem 100% 5rem;
+	}
+
+	.pokemons-favorites-list__grid {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 10rem;
 		gap: 2rem;

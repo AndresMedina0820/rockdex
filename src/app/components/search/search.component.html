@@ -5,7 +5,7 @@
 		[(ngModel)]="keywords"
 		type="text"
 		placeholder="Busca un pokemon"
-		(keyup)="onSearch()"
+		(keyup.enter)="onSearch()"
 	/>
 	<app-pkm-button
 		class="search-pokemons__button"

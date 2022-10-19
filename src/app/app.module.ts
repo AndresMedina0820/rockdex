@@ -15,6 +15,8 @@ import { PkmButtonComponent } from './libs/pkm-button/pkm-button.component';
 import { PkmTopBarComponent } from './libs/pkm-top-bar/pkm-top-bar.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { SearchComponent } from './components/search/search.component';
+import { EmptyStateComponent } from './shared/empty-state/empty-state.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SearchComponent } from './components/search/search.component';
     PkmButtonComponent,
     PkmTopBarComponent,
     FavoritesComponent,
-    SearchComponent
+    SearchComponent,
+    EmptyStateComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

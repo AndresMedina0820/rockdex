@@ -1,9 +1,15 @@
-<div class="pokemons-list">
+<div *ngIf="loading">
+	<app-loading></app-loading>
+</div>
+
+<div class="pokemons-list" [ngClass]="blur">
 	<div class="pokemons-list__header">
 		<h1 class="title">Pokemones</h1>
-		<app-search
-		(searchPokemon)="onSearchPokemon($event)"
-		></app-search>
+		<div class="search">
+			<app-search
+			(searchPokemon)="onSearchPokemon($event)"
+			></app-search>
+		</div>
 	</div>
 	<div class="pokemons-list__grid" *ngIf="pokemons.length">
 		<app-pokemon
@@ -11,9 +17,8 @@
 		[pokemon]="pokemon"
 		></app-pokemon>
 	</div>
-	<div class="pokemons-list__empty-state" *ngIf="!pokemons.length">
-		<h1>No se encontraron pokemones</h1>
-		<img src="../../../assets/emptyStates/empty-state.png" alt="empty state">
+	<div *ngIf="!pokemons.length">
+		<app-empty-state></app-empty-state>
 	</div>
 	<div class="pokemons-list__button">
 		<div *ngIf="pokemons.length > 0">

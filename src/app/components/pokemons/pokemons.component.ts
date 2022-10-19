@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PokemonData, Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonsService } from '../../services/pokemons.service';
 import { catchError } from 'rxjs/internal/operators/catchError';
@@ -13,17 +13,20 @@ export class PokemonsComponent implements OnInit {
 	pokemons: Pokemon[] = [];
 	pokemonsFav: Pokemon[] = [];
 	nextURL = '';
-	btnClass: string = "default"
-	textContent: string = "VER MÁS"
+	btnClass: string = "default";
+	textContent: string = "VER MÁS";
+	loading = true
+	blur = 'blur';
+
+	@Output() loadingClass = new EventEmitter();
 
 	constructor(
 		private pokemonsService: PokemonsService,
-		private PokemonsService: PokemonsService
 	) { }
 
 	ngOnInit(): void {
-		this.PokemonsService.myFav$
-		.subscribe(data => this.pokemonsFav = data);
+		this.pokemonsService.myFav$
+		.subscribe(favs => this.pokemonsFav = favs);
 
 		this.pokemonsService.get()
 		.subscribe((data: any) => {
@@ -36,21 +39,34 @@ export class PokemonsComponent implements OnInit {
 		this.pokemonsService.get(this.nextURL)
 		.subscribe((data: any) => {
 			this.nextURL = data.next;
-			this.resolveUrl(data.results);
+			this.resolveUrl(data.results)
 		});
+	}
+
+	setLoading() {
+		this.loading = false;
+		this.loadingClass.emit(true);
+		this.blur = '';
 	}
 
 	resolveUrl(results:any) {
 		results.map((result: PokemonData) => {
-			this.PokemonsService.get(result.url)
-			.subscribe((detail: any) => {
-				this.pokemons.push({
-					id: detail.id,
-					name: detail.name,
-					pic: detail.sprites.other["official-artwork"].front_default,
-					types: detail.types,
-					fav: this.pokemonsFav.find(pkm => pkm.id === detail.id) ? true : false
-				});
+			this.pokemonsService.get(result.url)
+			.subscribe({
+				next: ((detail: any) => {
+					this.pokemons.push({
+						id: detail.id,
+						name: detail.name,
+						pic: detail.sprites.other["official-artwork"].front_default,
+						types: detail.types,
+						fav: this.pokemonsFav.find(pkm => pkm.id === detail.id) ? true : false
+					});
+				}),
+				complete: () => {
+					setTimeout(() => {
+						this.setLoading();
+					}, 3000);
+				}
 			}),
 			catchError(() => {
 				return [];
@@ -59,14 +75,18 @@ export class PokemonsComponent implements OnInit {
 	}
 
 	onSearchPokemon(keywords: string) {
+		this.loading = true;
+		this.blur = 'blur';
 		if (keywords) {
 			this.pokemonsService.getByName(keywords)
 			.subscribe({
 				next: ((data:any) => {
 					this.pokemons = data;
+					this.setLoading();
 				}),
-				error: (err) => {
+				error: () => {
 					this.pokemons = []
+					this.setLoading();
 				}
 			});
 		} else {
